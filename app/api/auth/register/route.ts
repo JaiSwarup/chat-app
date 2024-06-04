@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     try {
         const {name, email, password} = await req.json();
         if (!email || !name || !password) {
-            return  new NextResponse("Missing credentials", { status: 400 });
+            return  new NextResponse("Missing credentials",{status: 400, });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
