@@ -31,7 +31,7 @@ const Form : React.FC<FormProps> = () => {
 
     return (
         <div className="p-4 bg-white border-t flex items-center gap-2 lg:gap-4 w-full">
-            <CldUploadButton options={{maxFiles : 1}} uploadPreset="trwvdhxb" onUploadAdded={(res)=>handleUpload(res)}>
+            <CldUploadButton options={{maxFiles : 1}} uploadPreset="trwvdhxb" onUpload={(res)=>handleUpload(res)}>
                 <HiPhoto size={32} className="text-sky-500" />
             </CldUploadButton>
             <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full" >
