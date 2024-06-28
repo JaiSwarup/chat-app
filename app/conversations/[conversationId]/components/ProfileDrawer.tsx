@@ -9,6 +9,7 @@ import {IoClose, IoTrash} from "react-icons/io5";
 import Avatar from "@/app/components/Avatar";
 import ConfirmModal from "./ConfirmModal";
 import AvatarGroup from "@/app/components/AvatarGroup";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface ProfileDrawerProps {
     data : Conversation & { users : User[]};
@@ -17,11 +18,12 @@ interface ProfileDrawerProps {
 }
 const ProfileDrawer : React.FC<ProfileDrawerProps> = ({data, isOpen, onClose}) => {
     const otherUser = useOtherUser(data);
-    const [confirmOpen, setCofirmOpen] = useState(false);
-    
+    const [confirmOpen, setConfirmOpen] = useState(false);
 
+    const {members} = useActiveList();
+    const isActive = members.indexOf(otherUser.email || "") !== -1;
     const joinedDate = useMemo(()=>{
-        return format(new Date(otherUser.createdAt), 'p');
+        return format(new Date(otherUser.createdAt), 'PP');
     }, [otherUser.createdAt]);
 
     const title = useMemo(()=>{
@@ -33,13 +35,13 @@ const ProfileDrawer : React.FC<ProfileDrawerProps> = ({data, isOpen, onClose}) =
             return `${data.users.length} members`
         }
 
-        return 'Active';
-    }, [data]);
+        return isActive ? 'Active' : 'Offline';
+    }, [data, isActive]);
 
 
     return (
         <>
-        <ConfirmModal isOpen={confirmOpen} onClose={()=> {setCofirmOpen(false)}} />
+        <ConfirmModal isOpen={confirmOpen} onClose={()=> {setConfirmOpen(false)}} />
         <Transition show={isOpen} as={Fragment}>
             <Dialog as="div" onClose={onClose} className="relative z-50" >
                 <TransitionChild
@@ -75,7 +77,7 @@ const ProfileDrawer : React.FC<ProfileDrawerProps> = ({data, isOpen, onClose}) =
                                                     {statusText}
                                                 </div>
                                                 <div className="flex gap-10 my-8">
-                                                    <div className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75" onClick={()=>{setCofirmOpen(true)}}>
+                                                    <div className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75" onClick={()=>{setConfirmOpen(true)}}>
                                                         <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
                                                             <IoTrash size={20} />
                                                         </div>
