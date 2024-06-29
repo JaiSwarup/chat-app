@@ -10,7 +10,6 @@ export async function POST(req:Request){
         if (!currentUser?.id) {
             return new NextResponse("Unauthorized", {status: 401})
         }
-        console.log(image)
 
         const updatedUser = await prisma.user.update({
             where: {id: currentUser.id},
