@@ -8,8 +8,11 @@ import ActiveStatus from "./components/ActiveStatus";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Messengi",
+  title: "Chat-App",
   description: "Chat App",
+  icons: {
+    icon: '/images/logo.png',
+  }
 };
 
 export default function RootLayout({
