@@ -66,7 +66,7 @@ const ConversationList : React.FC<ConversationListProps> = ({initialItems, users
         <>
         <GroupChatModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)}  users={users} />
         <aside className={
-            clsx("fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+            clsx("fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200 bg-gray-100",
                 isOpen ? "hidden" : "block w-full left-0"
                 )}>
                 <div className="px-5">
@@ -74,7 +74,7 @@ const ConversationList : React.FC<ConversationListProps> = ({initialItems, users
                         <div className="text-2xl font-bold text-gray-900">
                             Messages
                         </div>
-                        <div className="rounded-full p-2 bg-gray-100 text-gray-600 cursor-pointer hover:opacity-75 transition" onClick={()=>{setIsModalOpen(true)}}>
+                        <div className="rounded-full p-2 bg-gray-200 text-gray-600 cursor-pointer hover:opacity-75 transition" onClick={()=>{setIsModalOpen(true)}}>
                             <MdOutlineGroupAdd />
                         </div>
                     </div>

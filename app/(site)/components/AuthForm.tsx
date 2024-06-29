@@ -72,17 +72,22 @@ export default function AuthForm() {
     };
     const socialAction = useCallback((provider: string) => {
         setIsLoading(true);
-        try {
-            console.log("Social", provider);
-        } catch (error){
-            console.log(error);
-        } finally {
+        signIn(provider, {redirect: false})
+        .then((callback)=>{
+            if(callback?.error){
+                toast.error(callback.error);
+            }
+            if (callback?.ok) {
+                toast.success("Logged in successfully");
+            }
+        })
+        .finally(() => {
             setIsLoading(false);
-        }
+        });
     }, []);
     return (
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+            <div className="bg-gray-100 px-4 py-8 shadow sm:rounded-lg sm:px-10">
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     {variant === "REGISTER" && <Input id="name" type="text" label="Name" register={register} errors={errors} disabled={isLoading} />}
                     <Input id="email" type="email" label="Email" register={register} errors={errors} disabled={isLoading} />
@@ -97,7 +102,7 @@ export default function AuthForm() {
                             <div className="w-full border-t border-gray-300"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                            <span className="px-2 bg-gray-100 text-gray-500">Or continue with</span>
                         </div>
                     </div>
                     <div className="mt-6 grid grid-cols-2 gap-3">

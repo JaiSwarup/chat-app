@@ -30,14 +30,14 @@ const Form : React.FC<FormProps> = () => {
     }
 
     return (
-        <div className="p-4 bg-white border-t flex items-center gap-2 lg:gap-4 w-full">
+        <div className="p-4 bg-gray-100 border-t flex items-center gap-2 lg:gap-4 w-full">
             <CldUploadButton options={{maxFiles : 1}} uploadPreset="trwvdhxb" onUpload={(res)=>handleUpload(res)}>
-                <HiPhoto size={32} className="text-sky-500" />
+                <HiPhoto size={32} className="text-emerald-500" />
             </CldUploadButton>
             <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full" >
                 <MessageInput id="message" register={register} errors={errors} required placeholder="Write a message..." />
             </form>
-            <button type="submit" className="rounded-full p-2 bg-sky-500 cursor-pointer hover:bg-sky-600 transition">
+            <button type="submit" className="rounded-full p-2 bg-emerald-500 cursor-pointer hover:bg-emerald-600 transition">
                 <HiPaperAirplane size={18} className="text-white" />
             </button>
         </div>

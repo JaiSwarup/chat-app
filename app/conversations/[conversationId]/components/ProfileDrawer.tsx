@@ -54,11 +54,11 @@ const ProfileDrawer : React.FC<ProfileDrawerProps> = ({data, isOpen, onClose}) =
                         <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
                             <TransitionChild as={Fragment} enter="transform transition ease-in-out duration-500" enterFrom="translate-x-full" enterTo="translate-x-0"  leave="transform transition ease-in-out duration-500" leaveFrom="translate-x-0" leaveTo="translate-x-full">
                                 <DialogPanel className="pointer-events-auto w-screen max-w-md">
-                                    <div className="flex h-full overflow-y-scroll flex-col bg-white py-6 shadow-xl">
+                                    <div className="flex h-full overflow-y-scroll flex-col bg-gray-100 py-6 shadow-xl">
                                         <div className="px-4 sm:px-4">
                                             <div className="flex items-start justify-end">
                                                 <div className="ml-3 items-center flex h-7">
-                                                    <button type="button" onClick={onClose}className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
+                                                    <button type="button" onClick={onClose}className="rounded-md bg-gray-100 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
                                                         <span className="sr-only">Close panel</span>
                                                         <IoClose size={24} />
                                                     </button>
